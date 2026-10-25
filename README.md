@@ -25,7 +25,7 @@ git clone https://github.com/misshexa66/OunceCake.git
 
 4. OunceCake will prompt you to pick a game. Pick one, then wait.
 
-5. When OunceCake says `FTP up! ftp://<switch 2 ip>:2121`, use an FTP client to connect to your Switch 2's local IP address with port 2121. A username and password is not required.
+5. When OunceCake says `FTP up! ftp://<switch 2 ip>:2121`, use an FTP client to connect to your Switch 2's local IP address with port 2121. A username and password is not required. (Make sure your FTP client has its transfer mode set to Binary/Image/TYPE I.)
 
 ## Licensing
 

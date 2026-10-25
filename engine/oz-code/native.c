@@ -28,7 +28,7 @@ typedef struct {
 typedef struct {
     Server *server;
     int control, passive;
-    u32 cwd;
+    u32 cwd, binary;
     u64 restart;
     Address peer, local;
     char line[PATH_BYTES+1];
@@ -278,6 +278,10 @@ static int read_storage(Server *s,u32 handle,int file,u64 offset,u32 count) {
     return 1;
 }
 static int retrieve(Client *p,const char *name) {
+    if(!p->binary) {
+        passive_close(p);p->restart=0;
+        return reply(p,"503 Downloading in ASCII mode forbidden. Set your client to TYPE I (ASCII) first\r\n");
+    }
     Server *s=p->server;FtpConfig *c=s->c;u32 id=lookup(p,name);u64 restart=p->restart;p->restart=0;
     if(id==NONE||!s->nodes[id].type)return reply(p,"550 No such file\r\n");
     const Node *n=s->nodes+id;const Source *source=c->sources+n->mount;
@@ -325,7 +329,11 @@ static int command(Client *p,char *line) {
         if(id==NONE||p->server->nodes[id].type)return reply(p,"550 No such directory\r\n");
         p->cwd=id;return reply(p,"250 Directory changed\r\n");
     }
-    if(equal(name,"TYPE"))return reply(p,equal(arg,"I")||equal(arg,"A")?"200 Type accepted\r\n":"504 Unsupported type\r\n");
+    if(equal(name,"TYPE")) {
+        int binary=equal(arg,"I")||equal(arg,"i");
+        if(!binary&&!equal(arg,"A")&&!equal(arg,"a"))return reply(p,"504 Unsupported type\r\n");
+        p->binary=binary;return reply(p,"200 Type accepted\r\n");
+    }
     if(equal(name,"MODE"))return reply(p,equal(arg,"S")?"200 Stream mode\r\n":"504 Unsupported mode\r\n");
     if(equal(name,"STRU"))return reply(p,equal(arg,"F")?"200 File structure\r\n":"504 Unsupported structure\r\n");
     if(equal(name,"OPTS"))return reply(p,equal(arg,"UTF8 ON")?"200 UTF8 enabled\r\n":"501 Unsupported option\r\n");

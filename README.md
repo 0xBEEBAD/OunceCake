@@ -19,7 +19,7 @@ For the love of God, do NOT share any files you rip using this tool. It is to be
    git clone https://github.com/misshexa66/OunceCake.git
 ```
 
-2. Use the [ns2jb exploit](https://gitlab.com/kurumuz/ns2jb) to get an RPC connection with the system. Use `NS2_HOLD=1`, the ns2jb readme explains this.
+2. Use the [ns2jb exploit](https://gitlab.com/kurumuz/ns2jb) to get an RPC connection with the system.
 
 3. Run `node ouncecake.cjs <path-to-ns2jb-run>`. The output from ns2jb will tell you where this path is. (`Run folder: /home/hexa/projects/ns2jb2/runs/switch2-Icu7Jd`)
 

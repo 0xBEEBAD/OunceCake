@@ -1,4 +1,4 @@
-Was using a private fork of ns2jb by accident so this doesn't work, give me a minute.
+Currently a bug in the ns2jb fork this uses. Please wait.
 
 # OunceCake
 
@@ -21,7 +21,7 @@ For the love of God, do NOT share any files you rip using this tool. It is to be
    git clone https://github.com/misshexa66/OunceCake.git
 ```
 
-2. Use the [ns2jb exploit](https://gitlab.com/kurumuz/ns2jb) to get an RPC connection with the system.
+2. Use the [ns2jb exploit](https://gitlab.com/kurumuz/ns2jb) to get an RPC connection with the system. Use `--rpc`.
 
 3. Run `node ouncecake.cjs <path-to-ns2jb-run>`. The output from ns2jb will tell you where this path is. (`Run folder: /home/hexa/projects/ns2jb2/runs/switch2-Icu7Jd`)
 
@@ -31,6 +31,6 @@ For the love of God, do NOT share any files you rip using this tool. It is to be
 
 ## Licensing
 
-OunceCake is licensed under the terms of the GPLv2 (because it borrows a tiny bit of code from [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere)
+OunceCake is licensed under the terms of the GPLv2 (because it borrows a tiny bit of code from [Atmosphere](https://github.com/Atmosphere-NX/Atmosphere))
 
 You can find a copy of the license in the LICENSE file.

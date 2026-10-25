@@ -1,3 +1,5 @@
+Was using a private fork of ns2jb by accident so this doesn't work, give me a minute.
+
 # OunceCake
 
 (`ozdumptool` if you're ***lame*** and ***boring***) 

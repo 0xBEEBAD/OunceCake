@@ -1,5 +1,3 @@
-Currently a bug in the ns2jb fork this uses. Please wait.
-
 # OunceCake
 
 (`ozdumptool` if you're ***lame*** and ***boring***) 

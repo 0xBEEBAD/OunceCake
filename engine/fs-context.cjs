@@ -278,11 +278,11 @@ function mapBytes(rows) {
 }
 
 async function programMapReader(attachment) {
-  const { memory, layout } = await registryReader(attachment);
-  const text = layout.rootVptr - 0x2b1420;
-  // reading these from fs makes the switch 2 lock up, get it from vtable
-
-  const manager = await memory.pointer(text + 0x11e11d8);
+  const { memory } = await registryReader(attachment);
+  // actually grab the address we need instead of guessing at it
+  const nca = await memory.pointer(attachment.proof.rootAddress + 0x10);
+  const resolver = await memory.pointer(nca + 0x18);
+  const manager = await memory.pointer(resolver + 0x58);
   const head = manager + 0x50;
 
   async function entries() {
